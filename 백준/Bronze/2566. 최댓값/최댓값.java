@@ -1,37 +1,23 @@
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.StringTokenizer;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        int[][] arr = new int[9][9];
-        int max = 0;
-        int iLoc = 0;
-        int jLoc = 0;
-
-        for (int i = 0; i < 9; i++) {
-            StringTokenizer st = new StringTokenizer(br.readLine(), " ");
-            for (int j = 0; j < 9; j++) {
-                arr[i][j] = Integer.valueOf(st.nextToken());
-                if (arr[i][j] >= max) {
-                    max = arr[i][j];
-                    iLoc = i + 1;
-                    jLoc = j + 1;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int[][] board = new int[9][9];
+        int max = Integer.MIN_VALUE;
+        int row = 0;
+        int column = 0;
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                board[i][j] = sc.nextInt();
+                if (max < board[i][j]) {
+                    max = board[i][j];
+                    row = i + 1;
+                    column = j + 1;
                 }
             }
         }
-
-        bw.write(max +"\n");
-        bw.write(iLoc + " " + jLoc);
-
-        br.close();
-        bw.flush();
-        bw.close();
-
+        System.out.println(max);
+        System.out.println(row + " " + column);
     }
 }
