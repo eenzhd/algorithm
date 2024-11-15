@@ -1,31 +1,26 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        int n = sc.nextInt();
-        boolean check = true;
-        int count = 0;
-
-        for (int i = 0; i < n; i++) {
-            int num = sc.nextInt();
-            check = true;
-            if (num <= 1) {
-                check = false;
+        int num = sc.nextInt();
+        int answer = 0;
+        for (int i = 0; i < num; i++) {
+            int n = sc.nextInt();
+            boolean check = true;
+            if (n < 2) {
                 continue;
             }
-            for (int j = 2; j < num; j++) {
-                if (num % j == 0) {
+            for (int j = 2; j < n; j++) {
+                if (n % j == 0) {
                     check = false;
                     break;
                 }
             }
-            if (check) {
-                count++;
+            if(check) {
+                answer++;
             }
         }
-
-        System.out.println(count);
+        System.out.println(answer);
     }
 }
