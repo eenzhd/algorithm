@@ -1,17 +1,15 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int m = sc.nextInt();
         int n = sc.nextInt();
+        int m = sc.nextInt();
         int sum = 0;
-        int min = 0;
-
-        for (int i = m; i <= n; i++) {
+        int min = -1;
+        for (int i = n; i <= m; i++) {
             boolean check = true;
             if (i == 1) {
-                check = false;
                 continue;
             }
             for (int j = 2; j <= Math.sqrt(i); j++) {
@@ -22,14 +20,13 @@ public class Main {
             }
             if (check) {
                 sum += i;
-                if (min == 0) {
-                    min = i; // 처음 발견한 소수만 저장
+                if (min == -1) {
+                    min = i;
                 }
             }
         }
-
-        if (min == 0) {
-            System.out.println(-1);
+        if (min == -1) {
+            System.out.println(min);
         } else {
             System.out.println(sum);
             System.out.println(min);
