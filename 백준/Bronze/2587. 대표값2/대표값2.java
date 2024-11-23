@@ -1,5 +1,4 @@
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -7,12 +6,12 @@ public class Main {
         int sum = 0;
         int[] arr = new int[5];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = sc.nextInt();
-            sum += arr[i];
+            int num = sc.nextInt();
+            sum += num;
+            arr[i] = num;
         }
         Arrays.sort(arr);
-
-        System.out.println(sum / arr.length);
+        System.out.println(sum/arr.length);
         System.out.println(arr[2]);
     }
 }
