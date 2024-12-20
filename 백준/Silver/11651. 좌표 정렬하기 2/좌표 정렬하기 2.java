@@ -1,27 +1,30 @@
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.valueOf(br.readLine());
-        int[][] arr = new int[n][2];
-        for (int i = 0; i < n; i++) {
-            String[] input = br.readLine().trim().split(" ");
-            arr[i][0] = Integer.valueOf(input[0]);
-            arr[i][1] = Integer.valueOf(input[1]);
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int num = sc.nextInt();
+        int[][] arr = new int[num][2];
+
+        for (int i = 0; i < num; i++) {
+            arr[i][0] = sc.nextInt();
+            arr[i][1] = sc.nextInt();
         }
-        Arrays.sort(arr, (arr1, arr2) -> {
-            if (arr1[1] == arr2[1]) {
-                return Integer.compare(arr1[0], arr2[0]);
+
+        Arrays.sort(arr, (a, b) -> {
+            if (a[1] == b[1]) {
+                return a[0] - b[0];
+            }  else {
+                return a[1] - b[1];
             }
-            return Integer.compare(arr1[1], arr2[1]);
         });
 
-        for (int j = 0; j < n; j++) {
-            System.out.println(arr[j][0] + " " + arr[j][1]);
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                System.out.print(arr[i][j] + " ");
+            }
+            System.out.println();
         }
-        br.close();
     }
 }
